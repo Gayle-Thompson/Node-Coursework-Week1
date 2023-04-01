@@ -2,9 +2,12 @@
 // This is where your node app starts
 
 //load the 'express' module which makes writing webservers easy
-const express = require("express");
-const app = express();
-const port = 3000;
+var express = require("express");
+var cors = require("cors");
+var app = express();
+
+app.use(cors());
+const port = 3001;
 
 //load the quotes JSON
 const quotes = require("./quotes.json");
