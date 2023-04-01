@@ -17,22 +17,35 @@ const quotes = require("./quotes.json");
 //   response.send("Neill's Quote Server!  Ask me for /quotes/random, or /quotes");
 // });
 
-
-
 //START OF YOUR CODE...
-app.get("/welcome", function (request, response) {
+app.get("/", function (request, response) {
   response.send("Welcome to Gayle's Quote server, built with Node.js!");
 });
 
-app.get("/allQuotes", function (request, response) {
+app.get("/quotes", function (request, response) {
   response.json(quotes);
 });
 
-app.get("/getRandomQuote", function (request, response) {
+app.get("/quotes/getRandomQuote", function (request, response) {
   response.json(pickFromArray(quotes));
 });
 
+app.get("/quotes/search", function (request, response) {
+  const quotesQuery = request.query.searchterm;
 
+  function searchMyQuotes(abc) {
+    return abc.filter(
+      (eachQuote) =>
+        eachQuote.quote.toLowerCase().includes(quotesQuery.toLowerCase()) ||
+        eachQuote.author.toLowerCase().includes(quotesQuery.toLowerCase())
+    );
+  }
+  response.status(200);
+  response.json({
+    message: `you searched for: ${quotesQuery}`,
+    result: searchMyQuotes(quotes),
+  });
+});
 
 //...END OF YOUR CODE
 
@@ -47,4 +60,3 @@ function pickFromArray(arr) {
 app.listen(port, () => {
   console.log(`Your app is listening on port ${port}`);
 });
-
