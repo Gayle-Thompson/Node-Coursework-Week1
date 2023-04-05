@@ -12,17 +12,9 @@ const port = 3001;
 //load the quotes JSON
 const quotes = require("./quotes.json");
 
-// Now register handlers for some routes:
-//   /                  - Return some helpful welcome info (text)
-//   /quotes            - Should return all quotes (json)
-//   /quotes/random     - Should return ONE quote (json)
-// app.get("/", function (request, response) {
-//   response.send("Neill's Quote Server!  Ask me for /quotes/random, or /quotes");
-// });
-
 //START OF YOUR CODE...
 app.get("/", function (request, response) {
-  response.send("Welcome to Gayle's Quote server, built with Node.js!");
+  response.send("Welcome to Gayle's Quote server, built with Node.js! This project is not responding....");
 });
 
 app.get("/quotes", function (request, response) {
