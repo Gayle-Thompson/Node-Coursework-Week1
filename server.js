@@ -5,6 +5,7 @@
 var express = require("express");
 var cors = require("cors");
 var app = express();
+// before our routes definition
 
 app.use(cors());
 const port = 3001;
@@ -14,7 +15,7 @@ const quotes = require("./quotes.json");
 
 //START OF YOUR CODE...
 app.get("/", function (request, response) {
-  response.send("Welcome to Gayle's Quote server, built with Node.js! This project is not responding....");
+  response.send("Welcome to Gayle's Quote server, built with Node.js!");
 });
 
 app.get("/quotes", function (request, response) {
